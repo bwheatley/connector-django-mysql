@@ -100,7 +100,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         self.client = DatabaseClient(self)
         self.creation = DatabaseCreation(self)
         self.introspection = DatabaseIntrospection(self)
-        self.validation = DatabaseValidation()
+        self.validation = DatabaseValidation(self)
 
     def _valid_connection(self):
         if self.connection is not None:
@@ -120,19 +120,18 @@ class DatabaseWrapper(BaseDatabaseWrapper):
                 'use_unicode': True,
             }
             settings_dict = self.settings_dict
-            if settings_dict['DATABASE_USER']:
-                kwargs['user'] = settings_dict['DATABASE_USER']
-            if settings_dict['DATABASE_NAME']:
-                kwargs['db'] = settings_dict['DATABASE_NAME']
-            if settings_dict['DATABASE_PASSWORD']:
-                kwargs['password'] = settings_dict['DATABASE_PASSWORD']
-            if settings_dict['DATABASE_HOST'].startswith('/'):
-                kwargs['unix_socket'] = settings_dict['DATABASE_HOST']
-            elif settings_dict['DATABASE_HOST']:
-                kwargs['host'] = settings_dict['DATABASE_HOST']
-            if settings_dict['DATABASE_PORT']:
-                kwargs['port'] = int(settings_dict['DATABASE_PORT'])
-            kwargs.update(settings_dict['DATABASE_OPTIONS'])
+            if settings_dict['USER']:
+                kwargs['user'] = settings_dict['USER']
+            if settings_dict['NAME']:
+                kwargs['db'] = settings_dict['NAME']
+            if settings_dict['PASSWORD']:
+                kwargs['passwd'] = settings_dict['PASSWORD']
+            if settings_dict['HOST'].startswith('/'):
+                kwargs['unix_socket'] = settings_dict['HOST']
+            elif settings_dict['HOST']:
+                kwargs['host'] = settings_dict['HOST']
+            if settings_dict['PORT']:
+                kwargs['port'] = int(settings_dict['PORT'])
             self.connection = Database.connect(**kwargs)
             self.connection.set_converter_class(DjangoMySQLConverter)
         cursor = self.connection.cursor()

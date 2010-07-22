@@ -17,4 +17,4 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 # This file should be automatically generated on each release
-version = (0, 0, 1, 'alpha', '')
+version = (0, 0, 2, 'alpha', '')

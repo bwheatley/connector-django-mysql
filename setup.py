@@ -22,18 +22,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 import sys
 
 from distutils.core import setup
-from mysql.django._version import version as mysql_django_version
+from myconnpy_django_backend._version import version as mysql_django_version
 
 _name = 'Django Database Backend using MySQL Connector/Python'
 _version = '%d.%d.%d' % mysql_django_version[0:3]
-_packages = ['mysql','mysql.django']
+_packages = ['myconnpy_django_backend']
     
 setup(
     name = _name,
     version = _version,
     author = 'Geert Vanderkelen',
     author_email = 'geert.vanderkelen@sun.com',
-    url = 'http://dev.mysql.com/usingmysql/python/',
-    download_url = 'http://dev.mysql.com/downloads/connector/python/',
+    maintainer = 'Jeremy Thurgood',
+    maintainer_email = 'firxen@gmail.com',
+    url = 'http://github.com/jerith/connector-django-mysql',
     packages = _packages
 )
