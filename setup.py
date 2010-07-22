@@ -24,7 +24,7 @@ import sys
 from distutils.core import setup
 from myconnpy_django_backend._version import version as mysql_django_version
 
-_name = 'Django Database Backend using MySQL Connector/Python'
+_name = 'myconnpy_django_backend'
 _version = '%d.%d.%d' % mysql_django_version[0:3]
 _packages = ['myconnpy_django_backend']
     
